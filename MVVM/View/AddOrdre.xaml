@@ -1,0 +1,176 @@
+﻿<Window x:Class="ENL___WarehouseManagementSystem.MVVM.View.AddOrdre"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ENL___WarehouseManagementSystem.MVVM.View"
+        mc:Ignorable="d"
+        Title="Tilføj Ordre" 
+        Height="350" 
+        Width="500"
+        Background="#272537">
+
+    <Window.Resources>
+        <Style x:Key="addButton" TargetType="Button">
+            <Setter Property="Background" Value="#6741d9"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="addTextbox" TargetType="TextBox">
+            <Setter Property="Background" Value="#FF585858"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,5,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <TextBox Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text}" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Padding="5" 
+                             Foreground="White"
+                             VerticalContentAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <ComboBox Name="cbxStatus" 
+                  HorizontalAlignment="Left" 
+                  Margin="310,190,0,0" 
+                  Width="133"
+                  BorderBrush="White" 
+                  VerticalAlignment="Top" 
+                  Height="25" 
+                  Background="#FF353535">
+            <ComboBoxItem>Oprettet</ComboBoxItem>
+            <ComboBoxItem>Under Behandling</ComboBoxItem>
+            <ComboBoxItem>Afventer Betaling</ComboBoxItem>
+            <ComboBoxItem>Sendt</ComboBoxItem>
+            <ComboBoxItem>Afsluttet</ComboBoxItem>
+            <ComboBoxItem>Annulleret</ComboBoxItem>
+            <ComboBoxItem>Returneret</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox 
+            x:Name="cmbProducts" 
+            DisplayMemberPath="ProdNavn"
+            HorizontalAlignment="Left" 
+                  Margin="66,73,0,0" 
+                  Width="134"
+                  BorderBrush="White" 
+                  VerticalAlignment="Top" 
+                  Height="25" 
+                  Background="#FF353535"/>
+
+        <ComboBox 
+            x:Name="cmbEmployees" 
+            DisplayMemberPath="EmpName"
+            HorizontalAlignment="Left" 
+                  Margin="65,196,0,0" 
+                  Width="134"
+                  BorderBrush="White" 
+                  VerticalAlignment="Top" 
+                  Height="25" 
+                  Background="#FF353535"/>
+
+
+        <Button Content="Fortryd!" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="67,267,0,0" 
+                Click="BtnCancelOrdre_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins">
+
+        </Button>
+
+
+
+        <Button Content="Gem!" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="339,267,0,0" 
+                Click="BtnSaveOrdre_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins">
+        </Button>
+        <Label 
+            Content="Status" 
+            HorizontalAlignment="Left" 
+            Margin="339,154,0,0" 
+            VerticalAlignment="Top"
+            FontSize="19"
+            FontFamily="/Fonts/#Poppins"
+            Foreground="White"/>
+
+        <Label 
+            Content="Produkt" 
+            HorizontalAlignment="Left" 
+            Margin="92,37,0,0" 
+            VerticalAlignment="Top"
+            FontSize="19"
+            FontFamily="/Fonts/#Poppins"
+            Foreground="White"/>
+
+        <Label 
+            Content="Medarbejder" 
+            HorizontalAlignment="Left" 
+            Margin="67,154,0,0" 
+            VerticalAlignment="Top"
+            FontSize="19"
+            FontFamily="/Fonts/#Poppins"
+            Foreground="White"/>
+
+        <TextBox x:Name="txtAntal" 
+            HorizontalAlignment="Left" 
+            Margin="310,73,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="120"
+            Style="{StaticResource addTextbox}"/>
+
+        <Label 
+            Content="Antal" 
+            HorizontalAlignment="Left" 
+            Margin="339,36,0,0" 
+            VerticalAlignment="Top"
+            FontSize="19"
+            FontFamily="/Fonts/#Poppins"
+            Foreground="White"/>
+    </Grid>
+</Window>

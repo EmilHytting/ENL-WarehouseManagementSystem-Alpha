@@ -1,0 +1,264 @@
+﻿<UserControl x:Class="ENL___WarehouseManagementSystem.MVVM.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+
+    <UserControl.Resources>
+        <Style x:Key="addButton" TargetType="Button">
+            <Setter Property="Background" Value="#6741d9"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="addTextbox" TargetType="TextBox">
+            <Setter Property="Background" Value="#FF585858"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,5,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <TextBox Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text}" 
+                         Background="Transparent" 
+                         BorderThickness="0" 
+                         Padding="5" 
+                         Foreground="White"
+                         VerticalContentAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,0,0,20"/>
+        <StackPanel>
+
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Margin" Value="15,0,0,0"/>
+                    
+                </Style>
+            </StackPanel.Resources>
+
+            <StackPanel 
+                Orientation="Horizontal" 
+                Height="150">
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    Height="156" 
+                    Width="790">
+                    <Border 
+                        Width="158" 
+                        Height="100" 
+                        Background="#844eff" 
+                        CornerRadius="10" 
+                        Margin="20,0,0,0">
+                        
+                        <Grid>
+                            <Image 
+                                Source="/Images/user.png" 
+                                Stretch="UniformToFill"
+                                Width="60"
+                                Height="60"
+                                Margin="-40,-10,20,10"/>
+
+                            <StackPanel>
+                                <TextBlock 
+                                    x:Name="UserCountText" 
+                                    Text="0"
+                                    Foreground="White"
+                                    FontSize="36"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="70,15,0,0"
+                                    FontFamily="/Fonts/#Poppins"/>
+
+                                <TextBlock 
+                                    Text="Brugere" 
+                                    HorizontalAlignment="Right"
+                                    FontSize="20"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    Margin="0,0,20,0"
+                                    FontFamily="/Fonts/#Poppins"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border 
+                        Width="158"
+                        Height="100"
+                        Background="#844eff"
+                        CornerRadius="10">
+
+                        <Grid>
+                            <Image 
+                                Source="/Images/Gift.png" 
+                                Stretch="UniformToFill"
+                                Width="60"
+                                Height="60"
+                                Margin="-40,-10,20,10"/>
+
+                            <StackPanel>
+                                <TextBlock 
+                                    x:Name="ProduktCountTextBlock" Text="0"
+                                   Foreground="White"
+                                   FontSize="36"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="70,15,0,0"
+                                   FontFamily="/Fonts/#Poppins"/>
+
+                                <TextBlock Text="Produkter" 
+                       HorizontalAlignment="Right"
+                       FontSize="20"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Margin="0,0,10,0"
+                                       FontFamily="/Fonts/#Poppins"/>
+                        </StackPanel>
+                     </Grid>
+                    </Border>
+                    
+                    
+                    <Border 
+                        Width="158"
+                        Height="100"
+                        Background="#844eff"
+                        CornerRadius="10">
+
+                        <Grid>
+                            <Image 
+                                Source="/Images/increasing.png" 
+                                Stretch="UniformToFill"
+                                Width="60"
+                                Height="60"
+                                Margin="-40,-10,20,10"/>
+
+                            <StackPanel>
+                            <TextBlock Text="0"
+                            Foreground="White"
+                            FontSize="36"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="70,15,0,0"
+                            FontFamily="/Fonts/#Poppins"/>
+
+                            <TextBlock 
+                            Text="Ordre" 
+                            HorizontalAlignment="Right"
+                            FontSize="20"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            Margin="0,0,22,0"
+                                FontFamily="/Fonts/#Poppins"/>
+                        </StackPanel>
+                       </Grid>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel 
+            Height="280" 
+            Width="412" 
+            HorizontalAlignment="Left">
+            <Border 
+                HorizontalAlignment="Left" 
+                Margin="20,40,0,0" 
+                BorderBrush="Black" 
+                BorderThickness="1" 
+                Height="211" 
+                Width="368" 
+                Background="#844eff" 
+                CornerRadius="10">
+
+                <Grid>
+                    <Image 
+                        Source="/Images/help.png" 
+                        Stretch="UniformToFill"
+                        Width="120"
+                        Height="120"
+                        Margin="227,82,19,7"/>
+
+                    <StackPanel>
+                        <TextBlock 
+                        Text="Velkommen til" 
+                        HorizontalAlignment="Left" 
+                        Margin="20,12,0,0" Width="331" 
+                        FontSize="28" 
+                        Foreground="White" 
+                        FontFamily="/Fonts/#Poppins"/>
+
+                        <TextBlock Text="ENL Warehouse Management System - "
+                               FontSize="15"
+                               Foreground="White"
+                               HorizontalAlignment="Left"
+                               Margin="20,0,0,0"
+                               FontFamily="/Fonts/#Poppins">
+                        </TextBlock>
+
+                        <TextBlock Text="Har du brug for hjælp?&#x0a;Tryk på knappen nedenfor"
+                               FontSize="15"
+                               Foreground="White"
+                               HorizontalAlignment="Left"
+                               Margin="20,0,0,0"
+                               FontFamily="/Fonts/#Poppins">
+                        </TextBlock>
+
+                        <StackPanel
+                        HorizontalAlignment="Left"
+                        Margin="0,40,0,0"
+                        Height="72" 
+                        Width="140">
+                            <Button 
+                        Content="Klik her!" 
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource addButton}"
+                        Margin="20,5,0,0" 
+                        Width="110" 
+                        RenderTransformOrigin="0.586,-0.527" Click="Button_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,218 @@
+﻿<Window x:Class="ENL___WarehouseManagementSystem.MVVM.View.EditProdukt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ENL___WarehouseManagementSystem.MVVM.View"
+        mc:Ignorable="d"
+        Title="Rediger Produkt" 
+        Height="369" 
+        Width="500"
+        Background="#272537">
+
+    <Window.Resources>
+        <Style x:Key="addButton" TargetType="Button">
+            <Setter Property="Background" Value="#6741d9"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="addTextbox" TargetType="TextBox">
+            <Setter Property="Background" Value="#FF585858"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,5,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <TextBox Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text}" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Padding="5" 
+                             Foreground="White"
+                             VerticalContentAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+
+
+    <Grid>
+        <!-- Inputfelter til medarbejderoplysninger -->
+        <Label Content="Produkt Navn:" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="26,64,0,0"
+               FontFamily="/Fonts/#Poppins"
+               Foreground="White"/>
+
+        <TextBox x:Name="TbxProdNavn" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Width="201" 
+                 Margin="136,64,0,0"
+                 Style="{StaticResource addTextbox}"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"/>
+
+
+        <Label Content=" Antal:" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="27,103,0,0" 
+               FontFamily="/Fonts/#Poppins"
+               Foreground="White" RenderTransformOrigin="-0.16,0.143"/>
+
+        <TextBox x:Name="TbxProdAntal" 
+                 VerticalAlignment="Top" 
+                 Width="201" 
+                 Margin="136,103,0,0"
+                 Style="{StaticResource addTextbox}" HorizontalAlignment="Left"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"/>
+
+
+        <Label Content="Beskrivelse:" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="32,144,0,0"
+               FontFamily="/Fonts/#Poppins" Foreground="White"/>
+
+        <TextBox x:Name="TbxProdDesc" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Width="201" 
+                 Margin="136,144,0,0"
+                 Style="{StaticResource addTextbox}"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"/>
+
+        <Label Content=" Placering:" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="27,185,0,0"
+               FontFamily="/Fonts/#Poppins" Foreground="White"/>
+
+        <TextBox x:Name="TbxProdPlacering" 
+                 VerticalAlignment="Top" 
+                 Width="201" 
+                 Margin="136,185,0,0"
+                 Style="{StaticResource addTextbox}" HorizontalAlignment="Left"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"/>
+
+        <Label Content="Dato:" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="32,228,0,0"
+               FontFamily="/Fonts/#Poppins" Foreground="White"/>
+
+        <TextBox x:Name="TbxDato"
+                 VerticalAlignment="Top" 
+                 Width="201" 
+                 Margin="136,228,0,0"
+                 Style="{StaticResource addTextbox}"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White" 
+                 HorizontalAlignment="Left"
+                 IsReadOnly="True"/>
+
+        <TextBox x:Name="TbxProdId"
+                 VerticalAlignment="Top" 
+                 Width="44" 
+                 Margin="136,26,0,0"
+                 Style="{StaticResource addTextbox}"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White" 
+                 HorizontalAlignment="Left"
+                 IsEnabled="False"/>
+
+        <Label Content="Id:" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Margin="33,26,0,0"
+            FontFamily="/Fonts/#Poppins" Foreground="White"/>
+
+
+        <!-- Gem og Annuller knapper -->
+        <Button Content="Save" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="74" 
+                Margin="350,290,0,0" 
+                Click="BtnSaveProdukt_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins"/>
+
+        <Button Content="Cancel" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="63,290,0,0" 
+                Click="BtnCancelProdukt_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins"/>
+
+        <Button Content="Tilbage" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="163,290,0,0" 
+                Click="BtnTilbageProdukt_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins"/>
+
+        <Button Content="Næste" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="250,290,0,0" 
+                Click="BtnNæsteProdukt_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins"/>
+
+        <Image Source="/Images/edit-product.png"
+            HorizontalAlignment="Left" 
+            Height="120" 
+            Margin="353,99,0,0" 
+            VerticalAlignment="Top" 
+            Width="118" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.82"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+    </Grid>
+</Window>

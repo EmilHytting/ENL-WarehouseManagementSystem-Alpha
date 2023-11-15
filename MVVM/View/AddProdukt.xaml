@@ -1,0 +1,152 @@
+﻿<Window x:Class="ENL___WarehouseManagementSystem.MVVM.View.AddProdukt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ENL___WarehouseManagementSystem.MVVM.View"
+        mc:Ignorable="d"
+        Title="Tilføj Produkt" 
+        Height="350" 
+        Width="500"
+        Background="#272537">
+
+
+    <Window.Resources>
+        <Style x:Key="addButton" TargetType="Button">
+            <Setter Property="Background" Value="#6741d9"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="addTextbox" TargetType="TextBox">
+            <Setter Property="Background" Value="#FF585858"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,5,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <TextBox Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text}" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Padding="5" 
+                             Foreground="White"
+                             VerticalContentAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6F52C7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+
+
+    <Grid>
+        <!-- Inputfelter til medarbejderoplysninger -->
+
+        <TextBox x:Name="TbxProdNavn" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Width="200" 
+                 Margin="85,19,0,0"
+                 Style="{StaticResource addTextbox}"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"
+                 materialDesign:HintAssist.Hint="Indtast Produkt Navn.."/>
+
+        <TextBox x:Name="TbxProdAntal" 
+                 VerticalAlignment="Top" 
+                 Width="107" 
+                 Margin="85,68,0,0"
+                 Style="{StaticResource addTextbox}" HorizontalAlignment="Left"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"
+                 materialDesign:HintAssist.Hint="Indtast Antal.."/>
+
+        <TextBox x:Name="TbxProdDesc" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Width="198" 
+                 Margin="85,158,0,0"
+                 Style="{StaticResource addTextbox}"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"
+                 materialDesign:HintAssist.Hint="Indtast Produkt Beskrivelse.."/>
+
+        <TextBox x:Name="TbxProdPlacering" 
+                 VerticalAlignment="Top" 
+                 Width="142" 
+                 Margin="85,113,0,0"
+                 Style="{StaticResource addTextbox}" HorizontalAlignment="Left"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"
+                 materialDesign:HintAssist.Hint="Indtast Placering.."/>
+
+        <TextBox x:Name="TbxProdDato" 
+                 VerticalAlignment="Top" 
+                 Width="199" 
+                 Margin="86,206,0,0"
+                 Style="{StaticResource addTextbox}" HorizontalAlignment="Left"
+                 FontFamily="/Fonts/#Poppins"
+                 Foreground="White"
+                 IsReadOnly="True"
+                 materialDesign:HintAssist.Hint="Dato Oprettelse.."/>
+
+        <!-- Gem og Annuller knapper -->
+        <Button Content="Gem!" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="350,254,0,0" 
+                Click="BtnSaveProdukt_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins"/>
+
+        <Button Content="Fortryd!" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="85,254,0,0" 
+                Click="BtnCancelProdukt_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins"/>
+
+
+        <Image Source="/Images/addprod.png"
+            HorizontalAlignment="Left" 
+            Height="127" 
+            Margin="331,51,0,0" 
+            VerticalAlignment="Top" 
+            Width="129"/>
+
+
+    </Grid>
+</Window>

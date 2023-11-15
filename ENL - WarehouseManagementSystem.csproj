@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <RootNamespace>ENL___WarehouseManagementSystem</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\add-user.png" />
+    <None Remove="Images\addprod.png" />
+    <None Remove="Images\edit-product.png" />
+    <None Remove="Images\ENL-Dis.png" />
+    <None Remove="Images\Gift.png" />
+    <None Remove="Images\help.png" />
+    <None Remove="Images\id-card.png" />
+    <None Remove="Images\increasing.png" />
+    <None Remove="Images\news.png" />
+    <None Remove="Images\options.png" />
+    <None Remove="Images\Product.png" />
+    <None Remove="Images\Product2.png" />
+    <None Remove="Images\user-avatar.png" />
+    <None Remove="Images\user.png" />
+    <None Remove="MVVM\View\AddEmployee.xaml~RF1068106e.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\edit-product.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\Model\" />
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
+    <PackageReference Include="Microsoft.SqlServer.Server" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\add-user.png" />
+    <Resource Include="Images\addprod.png" />
+    <Resource Include="Images\ENL-Dis.png" />
+    <Resource Include="Images\Gift.png" />
+    <Resource Include="Images\help.png" />
+    <Resource Include="Images\id-card.png" />
+    <Resource Include="Images\increasing.png" />
+    <Resource Include="Images\news.png" />
+    <Resource Include="Images\options.png" />
+    <Resource Include="Images\Product.png" />
+    <Resource Include="Images\Product2.png" />
+    <Resource Include="Images\user-avatar.png" />
+    <Resource Include="Images\user.png" />
+  </ItemGroup>
+
+</Project>
