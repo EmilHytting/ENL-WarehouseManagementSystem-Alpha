@@ -30,6 +30,12 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
 
             // Opdater TextBlock-teksten
             ProduktCountTextBlock.Text = antalProdukter.ToString();
+
+            // Hent antallet af medarbejdere fra databasen
+            int antalOrdre = dbContext.GetOrdre().Count;
+
+            // Opdater TextBlock-teksten
+            OrdreCountTextBlock.Text = antalOrdre.ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

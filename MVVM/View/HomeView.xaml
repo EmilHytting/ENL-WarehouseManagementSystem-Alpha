@@ -73,7 +73,7 @@
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Margin" Value="15,0,0,0"/>
-                    
+
                 </Style>
             </StackPanel.Resources>
 
@@ -90,7 +90,7 @@
                         Background="#844eff" 
                         CornerRadius="10" 
                         Margin="20,0,0,0">
-                        
+
                         <Grid>
                             <Image 
                                 Source="/Images/user.png" 
@@ -106,9 +106,8 @@
                                     Foreground="White"
                                     FontSize="36"
                                     HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
                                     Margin="70,15,0,0"
-                                    FontFamily="/Fonts/#Poppins"/>
+                                    FontFamily="/Fonts/#Poppins" Width="71"/>
 
                                 <TextBlock 
                                     Text="Brugere" 
@@ -138,13 +137,13 @@
 
                             <StackPanel>
                                 <TextBlock 
-                                    x:Name="ProduktCountTextBlock" Text="0"
+                                   x:Name="ProduktCountTextBlock" 
+                                   Text="0"
                                    Foreground="White"
                                    FontSize="36"
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
                                    Margin="70,15,0,0"
-                                   FontFamily="/Fonts/#Poppins"/>
+                                   FontFamily="/Fonts/#Poppins" Width="55"/>
 
                                 <TextBlock Text="Produkter" 
                        HorizontalAlignment="Right"
@@ -153,11 +152,11 @@
                        FontWeight="Bold"
                        Margin="0,0,10,0"
                                        FontFamily="/Fonts/#Poppins"/>
-                        </StackPanel>
-                     </Grid>
+                            </StackPanel>
+                        </Grid>
                     </Border>
-                    
-                    
+
+
                     <Border 
                         Width="158"
                         Height="100"
@@ -173,15 +172,16 @@
                                 Margin="-40,-10,20,10"/>
 
                             <StackPanel>
-                            <TextBlock Text="0"
+                            <TextBlock 
+                            x:Name="OrdreCountTextBlock" 
+                            Text="0"
                             Foreground="White"
                             FontSize="36"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Margin="70,15,0,0"
-                            FontFamily="/Fonts/#Poppins"/>
+                            FontFamily="/Fonts/#Poppins" Width="63"/>
 
-                            <TextBlock 
+                                <TextBlock 
                             Text="Ordre" 
                             HorizontalAlignment="Right"
                             FontSize="20"
@@ -189,8 +189,8 @@
                             FontWeight="Bold"
                             Margin="0,0,22,0"
                                 FontFamily="/Fonts/#Poppins"/>
-                        </StackPanel>
-                       </Grid>
+                            </StackPanel>
+                        </Grid>
                     </Border>
                 </StackPanel>
             </StackPanel>

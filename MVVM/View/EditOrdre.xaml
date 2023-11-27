@@ -1,13 +1,12 @@
-﻿<Window x:Class="ENL___WarehouseManagementSystem.MVVM.View.AddOrdre"
+﻿<Window x:Class="ENL___WarehouseManagementSystem.MVVM.View.EditOrdre"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ENL___WarehouseManagementSystem.MVVM.View"
         mc:Ignorable="d"
-        Title="Tilføj Ordre" 
-        Height="350" 
+        Title="Rediger Ordre" 
+        Height="370" 
         Width="500"
         Background="#272537">
 
@@ -67,13 +66,60 @@
         </Style>
     </Window.Resources>
 
-
     <Grid>
+        <TextBox x:Name="tbxOrdreID" 
+            HorizontalAlignment="Left" 
+            Margin="153,26,0,0" 
+            TextWrapping="Wrap"  
+            VerticalAlignment="Top" 
+            Width="53"
+            Style="{StaticResource addTextbox}"/>
+
+        <Label 
+            Content="Id:" 
+            HorizontalAlignment="Left" 
+            Margin="45,24,0,0" 
+            VerticalAlignment="Top"
+            Foreground="White"
+            FontFamily="/Fonts/#Poppins"
+            FontSize="15"/>
+
+        <Button Content="Gem!" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="339,295,0,0" 
+                Click="BtnSaveOrdre1_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins">
+        </Button>
+
+        <Button Content="Anullere!" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="75" 
+                Margin="62,290,0,0" 
+                Click="BtnCancelOrdre1_Click"
+                Style="{StaticResource addButton}"
+                FontFamily="/Fonts/#Poppins">
+        </Button>
+
+        <ComboBox 
+            x:Name="cmbProducts" 
+            DisplayMemberPath="ProdNavn"
+            HorizontalAlignment="Left" 
+                  Margin="157,73,0,0" 
+                  Width="134"
+                  BorderBrush="#FF615E5E" 
+                  VerticalAlignment="Top" 
+                  Height="25" 
+                  Background="#FF353535" 
+                  ItemsSource="{Binding ProductList}"/>
+
+
         <ComboBox Name="cbxStatus" 
                   HorizontalAlignment="Left" 
-                  Margin="310,190,0,0" 
+                  Margin="156,225,0,0" 
                   Width="133"
-                  BorderBrush="White" 
+                  BorderBrush="#FF615E5E" 
                   VerticalAlignment="Top" 
                   Height="25" 
                   Background="#FF353535">
@@ -87,91 +133,57 @@
         </ComboBox>
 
         <ComboBox 
-            x:Name="cmbProducts" 
-            DisplayMemberPath="ProdNavn"
-            HorizontalAlignment="Left" 
-                  Margin="66,73,0,0" 
-                  Width="134"
-                  BorderBrush="White" 
-                  VerticalAlignment="Top" 
-                  Height="25" 
-                  Background="#FF353535"/>
-
-        <ComboBox 
             x:Name="cmbEmployees" 
             DisplayMemberPath="EmpName"
             HorizontalAlignment="Left" 
-                  Margin="65,196,0,0" 
+                  Margin="156,175,0,0" 
                   Width="134"
-                  BorderBrush="White" 
+                  BorderBrush="#FF615E5E" 
                   VerticalAlignment="Top" 
                   Height="25" 
                   Background="#FF353535"/>
 
 
-        <Button Content="Fortryd!" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" Width="75" 
-                Margin="67,267,0,0" 
-                Click="BtnCancelOrdre_Click"
-                Style="{StaticResource addButton}"
-                FontFamily="/Fonts/#Poppins">
-
-        </Button>
-
-
-
-        <Button Content="Gem!" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" Width="75" 
-                Margin="339,267,0,0" 
-                Click="BtnSaveOrdre_Click"
-                Style="{StaticResource addButton}"
-                FontFamily="/Fonts/#Poppins">
-        </Button>
-        <Label 
-            Content="Status" 
-            HorizontalAlignment="Left" 
-            Margin="339,154,0,0" 
-            VerticalAlignment="Top"
-            FontSize="19"
-            FontFamily="/Fonts/#Poppins"
-            Foreground="White"/>
-
-        <Label 
-            Content="Produkt" 
-            HorizontalAlignment="Left" 
-            Margin="92,37,0,0" 
-            VerticalAlignment="Top"
-            FontSize="19"
-            FontFamily="/Fonts/#Poppins"
-            Foreground="White"/>
-
-        <Label 
-            Content="Medarbejder" 
-            HorizontalAlignment="Left" 
-            Margin="67,154,0,0" 
-            VerticalAlignment="Top"
-            FontSize="19"
-            FontFamily="/Fonts/#Poppins"
-            Foreground="White"/>
-
         <TextBox x:Name="txtAntal" 
-            HorizontalAlignment="Left" 
-            Margin="310,73,0,0" 
+            Margin="155,121,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Width="120"
             Style="{StaticResource addTextbox}"
-            Foreground="White"/>
+            Foreground="White" HorizontalAlignment="Left"/>
 
         <Label 
-            Content="Antal" 
+            Content="Produkt:" 
             HorizontalAlignment="Left" 
-            Margin="339,36,0,0" 
+            Margin="38,69,0,0" 
             VerticalAlignment="Top"
-            FontSize="19"
+            Foreground="White"
             FontFamily="/Fonts/#Poppins"
-            Foreground="White"/>
+            FontSize="15"/>
+        <Label 
+            Content="Status:" 
+            HorizontalAlignment="Left" 
+            Margin="38,228,0,0" 
+            VerticalAlignment="Top"
+            Foreground="White"
+            FontFamily="/Fonts/#Poppins"
+            FontSize="15"/>
+        <Label 
+            Content="Medarbejder:" 
+            HorizontalAlignment="Left" 
+            Margin="38,172,0,0" 
+            VerticalAlignment="Top"
+            Foreground="White"
+            FontFamily="/Fonts/#Poppins"
+            FontSize="15"/>
+        <Label 
+            Content="Antal:" 
+            HorizontalAlignment="Left" 
+            Margin="38,118,0,0" 
+            VerticalAlignment="Top"
+            Foreground="White"
+            FontFamily="/Fonts/#Poppins"
+            FontSize="15"/>
+
     </Grid>
 </Window>

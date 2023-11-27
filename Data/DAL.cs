@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ENL___WarehouseManagementSystem.Data
 {
@@ -221,6 +222,54 @@ namespace ENL___WarehouseManagementSystem.Data
             return productList;
         }
 
+        public int GetProductIdByName(string productName)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT ProdID FROM Produkt WHERE ProdNavn = @ProdNavn";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ProdNavn", productName);
+                    var result = cmd.ExecuteScalar();
+                    return result == null ? -1 : (int)result;
+                }
+            }
+        }
+
+        public Produkt GetProductByName(string productName)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM Produkt WHERE ProdNavn = @ProdNavn";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ProdNavn", productName);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Produkt
+                            {
+                                ProdID = Convert.ToInt32(reader["ProdID"]),
+                                ProdNavn = reader["ProdNavn"].ToString(),
+                                ProdAntal = Convert.ToInt32(reader["ProdAntal"]),
+                                ProdBeskrivelse = reader["ProdBeskrivelse"].ToString(),
+                                ProdPlacering = reader["ProdPlacering"].ToString(),
+                                Oprettelse = Convert.ToDateTime(reader["Oprettelse"])
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public Produkt GetProductById(int productId)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -329,6 +378,123 @@ namespace ENL___WarehouseManagementSystem.Data
             }
         }
 
+        public void RemoveOrdre(Ordre ordre)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM Ordre WHERE OrdreID = @OrdreID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@OrdreID", ordre.OrdreID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateOrdre(Ordre ordre)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "UPDATE Ordre SET ProdNavn = @ProdNavn, OrdreAntal = @OrdreAntal, OrdreStatus = @OrdreStatus, EmpName = @EmpName, CreatedDate = @CreatedDate WHERE OrdreID = @OrdreID";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn, transaction))
+                        {
+                            cmd.Parameters.Add(new SqlParameter("@OrdreID", SqlDbType.Int) { Value = ordre.OrdreID });
+                            cmd.Parameters.Add(new SqlParameter("@ProdNavn", SqlDbType.NVarChar) { Value = ordre.ProdNavn });
+                            cmd.Parameters.Add(new SqlParameter("@OrdreAntal", SqlDbType.Int) { Value = ordre.OrdreAntal });
+                            cmd.Parameters.Add(new SqlParameter("@OrdreStatus", SqlDbType.NVarChar) { Value = ordre.OrdreStatus });
+                            cmd.Parameters.Add(new SqlParameter("@EmpName", SqlDbType.NVarChar) { Value = ordre.EmpName });
+                            cmd.Parameters.Add(new SqlParameter("@CreatedDate", SqlDbType.DateTime) { Value = ordre.CreatedDate });
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        // Håndter fejlen her, f.eks. log den eller vis en fejlmeddelelse.
+                        Console.WriteLine($"Fejl under opdatering af ordre: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        public Ordre GetOrdreById(int ordreId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM Ordre WHERE OrdreID = @OrdreID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@OrdreID", ordreId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Ordre
+                            {
+                                OrdreID = Convert.ToInt32(reader["OrdreID"]),
+                                ProdNavn = reader["ProdNavn"].ToString(),
+                                OrdreAntal = Convert.ToInt32(reader["OrdreAntal"]),
+                                OrdreStatus = reader["OrdreStatus"].ToString(),
+                                EmpName = reader["EmpName"].ToString(),
+                                CreatedDate = Convert.ToDateTime(reader["CreatedDate"])
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+
+        public Employee GetEmployeeByName(string empName)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM Employees WHERE EmpName = @EmpName";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@EmpName", empName);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Employee
+                            {
+                                EmpID = Convert.ToInt32(reader["EmpID"]),
+                                EmpName = reader["EmpName"].ToString(),
+                                LastName = reader["LastName"].ToString(),
+                                Age = Convert.ToInt32(reader["Age"]),
+                                EmpEmail = reader["EmpEmail"].ToString(),
+                                EmpPhone = reader["EmpPhone"].ToString(),
+                                CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
+                                EmploymentStatus = reader["EmploymentStatus"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
 
         //Ordre//
         public List<Ordre> GetOrdre()
@@ -338,22 +504,28 @@ namespace ENL___WarehouseManagementSystem.Data
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT * FROM Ordre"; // Brug "Ordre" i stedet for "Produkt"
+                string query = "SELECT * FROM Ordre";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        ordreList.Add(new Ordre
+                        Ordre ordre = new Ordre
                         {
                             OrdreID = Convert.ToInt32(reader["OrdreID"]),
                             ProdNavn = reader["ProdNavn"].ToString(),
                             OrdreAntal = Convert.ToInt32(reader["OrdreAntal"]),
                             OrdreStatus = reader["OrdreStatus"].ToString(),
-                            EmpName = reader["EmpName"].ToString(),
-                            CreatedDate = Convert.ToDateTime(reader["CreatedDate"])
-                        });
+                            CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
+                            EmpName = reader["EmpName"].ToString()
+                        };
+
+                        // Hent medarbejderdata separat
+                        string empName = reader["EmpName"].ToString();
+                        ordre.Employee = GetEmployeeByName(empName);
+
+                        ordreList.Add(ordre);
                     }
                 }
             }

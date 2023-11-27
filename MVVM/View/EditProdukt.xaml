@@ -163,7 +163,8 @@
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
             Margin="33,26,0,0"
-            FontFamily="/Fonts/#Poppins" Foreground="White"/>
+            FontFamily="/Fonts/#Poppins" 
+               Foreground="White"/>
 
 
         <!-- Gem og Annuller knapper -->
