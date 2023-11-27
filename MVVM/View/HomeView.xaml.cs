@@ -16,25 +16,25 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
         public HomeView()
         {
             InitializeComponent();
-            dbContext = new DAL("Server=DESKTOP-S5PO84T;Database=ENL-Distribution-A/S;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;"); //Forbindelsesstreng 
+            dbContext = new DAL("Server=DESKTOP-S5PO84T;Database=ENL-Distribution-A/S;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;"); 
 
-            // Hent antallet af medarbejdere fra databasen
+            
             int antalMedarbejdere = dbContext.GetAllEmployees().Count;
 
-            // Opdater TextBlock-teksten
+            
             UserCountText.Text = antalMedarbejdere.ToString();
 
 
-            // Hent antallet af medarbejdere fra databasen
+            
             int antalProdukter = dbContext.GetProducts().Count;
 
-            // Opdater TextBlock-teksten
+            
             ProduktCountTextBlock.Text = antalProdukter.ToString();
 
-            // Hent antallet af medarbejdere fra databasen
+            
             int antalOrdre = dbContext.GetOrdre().Count;
 
-            // Opdater TextBlock-teksten
+            
             OrdreCountTextBlock.Text = antalOrdre.ToString();
         }
 
@@ -52,7 +52,7 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
             }
             catch (Exception ex)
             {
-                // Håndter fejl ved at åbne webstedet
+               // Håndter fejl ved at åbne webstedet
             }
         }
     }

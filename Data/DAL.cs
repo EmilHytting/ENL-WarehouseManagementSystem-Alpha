@@ -17,7 +17,6 @@ namespace ENL___WarehouseManagementSystem.Data
 
 
 
-
         //USERLOGIN//
         public bool ValidateLogin(string username, string password)
         {
@@ -421,7 +420,6 @@ namespace ENL___WarehouseManagementSystem.Data
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        // Håndter fejlen her, f.eks. log den eller vis en fejlmeddelelse.
                         Console.WriteLine($"Fejl under opdatering af ordre: {ex.Message}");
                     }
                 }
@@ -521,7 +519,6 @@ namespace ENL___WarehouseManagementSystem.Data
                             EmpName = reader["EmpName"].ToString()
                         };
 
-                        // Hent medarbejderdata separat
                         string empName = reader["EmpName"].ToString();
                         ordre.Employee = GetEmployeeByName(empName);
 

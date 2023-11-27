@@ -65,7 +65,6 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
                 var status = (cbxStatus.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Oprettet";
                 var selectedEmployee = cmbEmployees.SelectedItem as Employee;
 
-                // Opret en ny Ordre med de nødvendige oplysninger
                 var newOrdre = new Ordre
                 {
                     ProdNavn = selectedProduct.ProdNavn,

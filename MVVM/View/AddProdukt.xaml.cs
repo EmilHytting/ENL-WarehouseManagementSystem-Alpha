@@ -32,25 +32,25 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
 
                 if (int.TryParse(TbxProdPlacering.Text, out placering) && placering >= 0)
                 {
-                    int række = placering / 10; // Del ved 10 for at få række
-                    int hylde = placering % 10; // Tag resten for at få hylde
+                    int række = placering / 10; 
+                    int hylde = placering % 10; 
 
-                    // Opret format for placering (f.eks. 1.2 eller 1.1)
+                    
                     string formateretPlacering = $"{række}.{hylde}";
 
                     try
                     {
-                        // Opret en ny produktinstans
+                        
                         Produkt newProduct = new Produkt
                         {
                             ProdNavn = productName,
                             ProdBeskrivelse = productDescription,
                             ProdAntal = productQuantity,
                             ProdPlacering = formateretPlacering,
-                            Oprettelse = DateTime.Now // Gem placeringen som en streng
+                            Oprettelse = DateTime.Now 
                         };
 
-                        // Tilføj produktet til databasen
+                       
                         dbContext.AddProduct(newProduct);
                         MessageBox.Show("Produktet blev tilføjet med succes.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 

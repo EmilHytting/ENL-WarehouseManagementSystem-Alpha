@@ -49,7 +49,7 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
             cmbEmployees.SelectedItem = dbContext.GetEmployeeByName(ordreToEdit.EmpName);
         }
 
-        private void LoadProductData() // Indlæser ordre der er lavet.
+        private void LoadProductData() 
         {
             ProductList.Clear();
             var products = dbContext.GetProducts();
@@ -66,7 +66,7 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
             cmbEmployees.ItemsSource = employees;
         }
 
-        private void BtnSaveOrdre1_Click(object sender, RoutedEventArgs e) // Gemmer Ordre.
+        private void BtnSaveOrdre1_Click(object sender, RoutedEventArgs e) 
         {
             try
             {
@@ -124,7 +124,7 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
             cmbEmployees.SelectedItem = selectedEmployee;
         }
 
-        private void BtnCancelOrdre1_Click(object sender, RoutedEventArgs e) // Lukker Edit Vinduet.
+        private void BtnCancelOrdre1_Click(object sender, RoutedEventArgs e) 
         {
             Close();
         }

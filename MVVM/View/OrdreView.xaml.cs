@@ -29,10 +29,10 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
 
         private void UpdateOrdreList(List<Ordre> data)
         {
-            OrdreList.Clear(); // Ryd eksisterende data
+            OrdreList.Clear(); 
             foreach (var ordre in data)
             {
-                OrdreList.Add(ordre); // Tilføj hver ordre til ObservableCollection
+                OrdreList.Add(ordre); 
             }
             dgOrdre.ItemsSource = OrdreList;
         }
@@ -108,12 +108,12 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
         {
             try
             {
-                // Opdater datagridet med de opdaterede data
-                var ordreList = dbContext.GetOrdre(); // Hent alle ordrer igen
-                OrdreList.Clear(); // Ryd eksisterende data
+                
+                var ordreList = dbContext.GetOrdre(); 
+                OrdreList.Clear(); 
                 foreach (var ordre in ordreList)
                 {
-                    OrdreList.Add(ordre); // Tilføj hver ordre til ObservableCollection
+                    OrdreList.Add(ordre); 
                 }
             }
             catch (Exception ex)

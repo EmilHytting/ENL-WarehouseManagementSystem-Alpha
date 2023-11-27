@@ -65,7 +65,7 @@ namespace ENL___WarehouseManagementSystem
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
-                Hide();  // Skjul loginvinduet i stedet for at lukke det
+                Hide();  
             }
             else
             {

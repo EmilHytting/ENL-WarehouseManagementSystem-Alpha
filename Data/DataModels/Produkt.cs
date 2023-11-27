@@ -16,15 +16,10 @@ namespace ENL___WarehouseManagementSystem.Data.DataModels
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProdID { get; set; }
-
         public string ProdNavn { get; set; }
-
         public int ProdAntal { get; set; }
-
         public string ProdBeskrivelse { get; set; }
-
         public string ProdPlacering { get; set; }
-
         public DateTime Oprettelse { get; set; }
 
     }

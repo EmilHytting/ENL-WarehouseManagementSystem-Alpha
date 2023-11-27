@@ -19,7 +19,7 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
         public MedarbejderView()
         {
             InitializeComponent();
-            dbContext = new DAL("Server=DESKTOP-S5PO84T;Database=ENL-Distribution-A/S;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;"); // forbindelsesstreng 
+            dbContext = new DAL("Server=DESKTOP-S5PO84T;Database=ENL-Distribution-A/S;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;"); 
             LoadEmployeesFromDatabase();
         }
 

@@ -20,7 +20,7 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
         public EditProdukt()
         {
             InitializeComponent();
-            dbContext = new DAL("Server=DESKTOP-S5PO84T;Database=ENL-Distribution-A/S;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;"); // Erstat med din forbindelsesstreng
+            dbContext = new DAL("Server=DESKTOP-S5PO84T;Database=ENL-Distribution-A/S;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;"); 
 
             productList = dbContext.GetProducts().ToList();
             currentIndex = 0;
@@ -108,8 +108,6 @@ namespace ENL___WarehouseManagementSystem.MVVM.View
                 TbxProdAntal.Text = product.ProdAntal.ToString();
                 TbxProdDesc.Text = product.ProdBeskrivelse;
                 TbxProdPlacering.Text = product.ProdPlacering;
-
-                // Opdater TbxProdDato med datoen fra produktet
                 produktDato = product.Oprettelse;
                 TbxDato.Text = produktDato.ToString("yyyy-MM-dd HH:mm:ss");
             }
